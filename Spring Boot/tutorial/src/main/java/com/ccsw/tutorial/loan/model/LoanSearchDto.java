@@ -1,6 +1,6 @@
 package com.ccsw.tutorial.loan.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.ccsw.tutorial.common.pagination.PageableRequest;
 
@@ -9,7 +9,7 @@ public class LoanSearchDto {
     private PageableRequest pageable;
     private Long gameId;
     private Long clientId;
-    private LocalDateTime date;
+    private LocalDate date;
 
     public Long getGameId() {
         return this.gameId;
@@ -27,11 +27,11 @@ public class LoanSearchDto {
         this.clientId = clientId;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

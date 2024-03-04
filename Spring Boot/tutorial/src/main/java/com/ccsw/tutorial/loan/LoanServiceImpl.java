@@ -1,6 +1,6 @@
 package com.ccsw.tutorial.loan;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.BeanUtils;
@@ -65,8 +65,8 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public void save(LoanDto data) throws Exception {
 
-        LocalDateTime loanStartDate = data.getStartDate();
-        LocalDateTime loanEndDate = data.getEndDate();
+        LocalDate loanStartDate = data.getStartDate();
+        LocalDate loanEndDate = data.getEndDate();
 
         if (loanEndDate.isBefore(loanStartDate)) {
             throw new Exception("La fecha de finalización no puede ser anterior a la fecha de inicio");
@@ -117,8 +117,8 @@ public class LoanServiceImpl implements LoanService {
         boolean hasLoan = false;
 
         Iterable<Loan> listLoan = loanRepository.findAll();
-        LocalDateTime selectedStartDate = data.getStartDate();
-        LocalDateTime selectedEndDate = data.getEndDate();
+        LocalDate selectedStartDate = data.getStartDate();
+        LocalDate selectedEndDate = data.getEndDate();
         ClientDto clientDto = data.getClient();
         Long clientDtoId = clientDto.getId();
 
@@ -128,18 +128,17 @@ public class LoanServiceImpl implements LoanService {
 
             if (client.getId().equals(clientDtoId)) {
 
-                LocalDateTime loanStartDate = loan.getStartDate();
-                LocalDateTime loanEndDate = loan.getEndDate();
+                LocalDate loanStartDate = loan.getStartDate();
+                LocalDate loanEndDate = loan.getEndDate();
 
                 if (loanStartDate.equals(selectedStartDate) || loanEndDate.equals(selectedEndDate)) {
-                    hasLoan = true; // Si hay un préstamo dentro de los extremos del rango, establecemos hasLoan
-                                    // como verdadero
-                    break; // No necesitamos continuar iterando si encontramos un préstamo
+                    hasLoan = true;
+                    break;
                 }
 
                 if (loanStartDate.isBefore(selectedEndDate) && loanEndDate.isAfter(selectedStartDate)) {
-                    hasLoan = true; // Si hay un préstamo dentro del rango, establecemos hasLoan como verdadero
-                    break; // No necesitamos continuar iterando si encontramos un préstamo
+                    hasLoan = true;
+                    break;
                 }
             }
 
@@ -156,8 +155,8 @@ public class LoanServiceImpl implements LoanService {
         boolean hasLoan = false;
 
         Iterable<Loan> listLoan = loanRepository.findAll();
-        LocalDateTime selectedStartDate = data.getStartDate();
-        LocalDateTime selectedEndDate = data.getEndDate();
+        LocalDate selectedStartDate = data.getStartDate();
+        LocalDate selectedEndDate = data.getEndDate();
         GameDto gameDto = data.getGame();
         Long gameDtoId = gameDto.getId();
 
@@ -167,18 +166,17 @@ public class LoanServiceImpl implements LoanService {
 
             if (game.getId().equals(gameDtoId)) {
 
-                LocalDateTime loanStartDate = loan.getStartDate();
-                LocalDateTime loanEndDate = loan.getEndDate();
+                LocalDate loanStartDate = loan.getStartDate();
+                LocalDate loanEndDate = loan.getEndDate();
 
                 if (loanStartDate.equals(selectedStartDate) || loanEndDate.equals(selectedEndDate)) {
-                    hasLoan = true; // Si hay un préstamo dentro de los extremos del rango, establecemos hasLoan
-                                    // como verdadero
-                    break; // No necesitamos continuar iterando si encontramos un préstamo
+                    hasLoan = true;
+                    break;
                 }
 
                 if (loanStartDate.isBefore(selectedEndDate) && loanEndDate.isAfter(selectedStartDate)) {
-                    hasLoan = true; // Si hay un préstamo dentro del rango, establecemos hasLoan como verdadero
-                    break; // No necesitamos continuar iterando si encontramos un préstamo
+                    hasLoan = true;
+                    break;
                 }
             }
 

@@ -1,6 +1,6 @@
 package com.ccsw.tutorial.loan.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.ccsw.tutorial.client.model.ClientDto;
 import com.ccsw.tutorial.game.model.GameDto;
@@ -13,9 +13,9 @@ public class LoanDto {
 
     private ClientDto client;
 
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     /**
      * @return id
@@ -68,7 +68,7 @@ public class LoanDto {
     /**
      * @return start date
      */
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
 
         return this.startDate;
     }
@@ -76,7 +76,7 @@ public class LoanDto {
     /**
      * @param startDate new value of {@link #getStartDate}.
      */
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
 
         this.startDate = startDate;
     }
@@ -84,7 +84,7 @@ public class LoanDto {
     /**
      * @return end date
      */
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
 
         return this.endDate;
     }
@@ -92,7 +92,7 @@ public class LoanDto {
     /**
      * @param endDate new value of {@link #getEndDate}.
      */
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
 
         this.endDate = endDate;
     }

@@ -8,6 +8,7 @@ import { LoanService } from '../loan.service';
 import { Loan } from '../model/Loan';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DialogExceptionComponent } from 'src/app/core/dialog-exception/dialog-exception.component';
+import { DateAdapter } from '@angular/material/core';
 
 
 @Component({
@@ -22,12 +23,15 @@ export class LoanEditComponent implements OnInit{
 
   constructor(
     public dialogRef: MatDialogRef<LoanEditComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any,
-        private loanService: LoanService,
-        private gameService: GameService,
-        private clientService: ClientService,
-        private dialog: MatDialog
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private loanService: LoanService,
+    private gameService: GameService,
+    private clientService: ClientService,
+    private dialog: MatDialog,
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
+  }
 
   ngOnInit(): void {
     this.loan = new Loan();
@@ -60,21 +64,6 @@ export class LoanEditComponent implements OnInit{
   }
 
   onSave() {
-
-    //Sumarle dos horas a la fecha no es la mejor opción
-    //pero no me aclaraba a la hora de hacerlo con UTC
-
-    
-    const startDate = new Date(this.loan.startDate);
-    startDate.setHours(startDate.getHours() + 2);
-    this.loan.startDate = startDate;
-
-    const endDate = new Date(this.loan.endDate);
-    endDate.setHours(endDate.getHours() + 2);
-    this.loan.endDate = endDate;
-  
-
-    // this.loan.endDate = new Date(this.loan.endDate.toUTCString())
 
     this.loanService.saveLoan(this.loan).subscribe(
       result => {

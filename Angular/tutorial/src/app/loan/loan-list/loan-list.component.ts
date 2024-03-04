@@ -11,6 +11,7 @@ import { Client } from 'src/app/client/model/Client';
 import { ClientService } from 'src/app/client/client.service';
 import { Game } from 'src/app/game/model/Game';
 import { GameService } from 'src/app/game/game.service';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-loan-list',
@@ -40,7 +41,10 @@ export class LoanListComponent implements OnInit{
     private gameService: GameService,
     private clientService: ClientService,
     public dialog: MatDialog,
-  ) {}
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
+  }
 
   ngOnInit(): void {
     this.loadPage();
@@ -75,10 +79,6 @@ export class LoanListComponent implements OnInit{
     let gameId = this.filterTitle != null ? this.filterTitle.id : null;
     let clientId = this.filterClient != null ? this.filterClient.id : null;
     let date = this.filterDate;
-   
-    if (date) {
-      date = new Date(date.getTime() + 2 * 60 * 60 * 1000); // Sumar dos horas en milisegundos
-    }
 
     this.loanService.getLoans(pageable, gameId, clientId, date).subscribe(
       loanPage => {

@@ -1,6 +1,6 @@
 package com.ccsw.tutorial.loan;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.data.jpa.domain.Specification;
 
@@ -34,11 +34,11 @@ public class LoanSpecification implements Specification<Loan> {
                 return builder.equal(path, criteria.getValue());
             }
         } else if (criteria.getOperation().equalsIgnoreCase("<=") && criteria.getValue() != null) {
-            return builder.greaterThanOrEqualTo(root.get(criteria.getKey()).as(LocalDateTime.class),
-                    (LocalDateTime) criteria.getValue());
+            return builder.greaterThanOrEqualTo(root.get(criteria.getKey()).as(LocalDate.class),
+                    (LocalDate) criteria.getValue());
         } else if (criteria.getOperation().equalsIgnoreCase(">=") && criteria.getValue() != null) {
-            return builder.lessThanOrEqualTo(root.get(criteria.getKey()).as(LocalDateTime.class),
-                    (LocalDateTime) criteria.getValue());
+            return builder.lessThanOrEqualTo(root.get(criteria.getKey()).as(LocalDate.class),
+                    (LocalDate) criteria.getValue());
         }
         return null;
     }

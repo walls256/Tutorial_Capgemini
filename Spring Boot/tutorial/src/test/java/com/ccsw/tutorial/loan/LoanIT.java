@@ -3,7 +3,7 @@ package com.ccsw.tutorial.loan;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -40,19 +40,19 @@ public class LoanIT {
     private static final int TOTAL_LOANS = 6;
     private static final int PAGE_SIZE = 5;
 
-    private static final LocalDateTime GAME_START_DATE = LocalDateTime.of(2024, 2, 10, 0, 0, 0);
-    private static final LocalDateTime GAME_END_DATE = LocalDateTime.of(2024, 2, 15, 0, 0, 0);
+    private static final LocalDate GAME_START_DATE = LocalDate.of(2024, 2, 10);
+    private static final LocalDate GAME_END_DATE = LocalDate.of(2024, 2, 15);
 
-    private static final LocalDateTime CLIENT_START_DATE = LocalDateTime.of(2024, 1, 27, 0, 0, 0);
-    private static final LocalDateTime CLIENT_END_DATE = LocalDateTime.of(2024, 2, 5, 0, 0, 0);
+    private static final LocalDate CLIENT_START_DATE = LocalDate.of(2024, 1, 27);
+    private static final LocalDate CLIENT_END_DATE = LocalDate.of(2024, 2, 5);
 
     private static final Long GAME_ID = 3L;
     private static final Long CLIENT_ID = 2L;
-    private static final LocalDateTime START_DATE = LocalDateTime.of(2024, 4, 2, 0, 0, 0);
-    private static final LocalDateTime END_DATE = LocalDateTime.of(2024, 4, 12, 0, 0, 0);
+    private static final LocalDate START_DATE = LocalDate.of(2024, 4, 2);
+    private static final LocalDate END_DATE = LocalDate.of(2024, 4, 12);
 
-    private static final LocalDateTime DATE = LocalDateTime.of(2024, 2, 5, 0, 0, 0);
-    private static final LocalDateTime NOT_EXIST_DATE = LocalDateTime.of(2024, 1, 5, 0, 0, 0);
+    private static final LocalDate DATE = LocalDate.of(2024, 2, 5);
+    private static final LocalDate NOT_EXIST_DATE = LocalDate.of(2024, 1, 5);
 
     @LocalServerPort
     private int port;

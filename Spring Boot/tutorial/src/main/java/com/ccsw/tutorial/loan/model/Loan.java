@@ -1,6 +1,6 @@
 package com.ccsw.tutorial.loan.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.ccsw.tutorial.client.model.Client;
 import com.ccsw.tutorial.game.model.Game;
@@ -33,13 +33,13 @@ public class Loan {
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "UTC")
     @JoinColumn(name = "start_date", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "UTC")
     @JoinColumn(name = "end_date", nullable = false)
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     /**
      * @return id
@@ -92,7 +92,7 @@ public class Loan {
     /**
      * @return start date
      */
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
 
         return this.startDate;
     }
@@ -100,7 +100,7 @@ public class Loan {
     /**
      * @param startDate new value of {@link #getStartDate}.
      */
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
 
         this.startDate = startDate;
 
@@ -109,7 +109,7 @@ public class Loan {
     /**
      * @return end date
      */
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
 
         return this.endDate;
     }
@@ -117,7 +117,7 @@ public class Loan {
     /**
      * @param endDate new value of {@link #getEndDate}.
      */
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
 
         this.endDate = endDate;
     }
